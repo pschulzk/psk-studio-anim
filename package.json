@@ -1,0 +1,27 @@
+{
+  "name": "psk-studio-anim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "webpack --config webpack.config.js --mode development",
+    "start": "npx http-server ./dist"
+  },
+  "author": "Philip Schulz-Klingauf",
+  "license": "MIT",
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "three": "^0.167.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.167.1",
+    "html-webpack-plugin": "^5.6.0",
+    "three-gltf-exporter": "^0.0.1",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
