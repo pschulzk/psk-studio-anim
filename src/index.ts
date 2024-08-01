@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { createJellyfish, exportGLB } from './generateJellyfish';
-// import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 
 document.getElementById('generate')!.addEventListener('click', async () => {
   const scene = await createJellyfish();
@@ -26,15 +26,39 @@ document.getElementById('startAnimation')!.addEventListener('click', () => {
 
   const loader = new GLTFLoader();
   loader.load(
-    'jellyfish.glb',
+    'teapot.glb',
     (gltf) => {
-      const jellyfish = gltf.scene;
-      scene.add(jellyfish);
+      const teapot = gltf.scene;
+      scene.add(teapot);
 
-      // Animate the jellyfish
+      // Animate the teapot using GSAP
+      gsap.to(teapot.rotation, {
+        y: "+=6.28", // Rotate 360 degrees
+        duration: 10,
+        repeat: -1,
+        ease: "none"
+      });
+
+      gsap.to(teapot.position, {
+        y: "+=1",
+        duration: 2,
+        yoyo: true,
+        repeat: -1,
+        ease: "power1.inOut"
+      });
+
+      gsap.to(teapot.scale, {
+        x: "+=0.2",
+        y: "+=0.2",
+        z: "+=0.2",
+        duration: 1.5,
+        yoyo: true,
+        repeat: -1,
+        ease: "power1.inOut"
+      });
+
       function animate() {
         requestAnimationFrame(animate);
-        jellyfish.rotation.y += 0.01;
         renderer.render(scene, camera);
       }
       animate();
